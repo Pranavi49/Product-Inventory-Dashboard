@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InventoryPro | Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">◆ InventoryPro</div>
+        <p class="nav-label">WORKSPACE</p>
+        <a class="nav-link active" href="#overview">▦ Dashboard</a>
+        <a class="nav-link" href="#inventory">▤ Inventory</a>
+        <a class="nav-link" href="#analytics">◷ Analytics</a>
+        <div class="sidebar-note">
+            <span class="status-dot"></span> Inventory system active
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">INVENTORY MANAGEMENT</p>
+                <h1>Dashboard Overview</h1>
+                <p class="muted">Manage products and monitor inventory performance.</p>
+            </div>
+            <button id="quickAddButton" class="button primary">+ Quick Add</button>
+        </header>
+
+        <section id="overview" class="stats-grid">
+            <article class="stat-card">
+                <span class="stat-icon blue">▤</span>
+                <p class="stat-label">Total Products</p>
+                <h2 id="totalProducts">0</h2>
+                <p class="stat-foot">Products in inventory</p>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon purple">$</span>
+                <p class="stat-label">Inventory Value</p>
+                <h2 id="inventoryValue">$0.00</h2>
+                <p class="stat-foot">Combined product value</p>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon green">↗</span>
+                <p class="stat-label">Average Price</p>
+                <h2 id="averagePrice">$0.00</h2>
+                <p class="stat-foot">Per product</p>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon orange">★</span>
+                <p class="stat-label">Premium Products</p>
+                <h2 id="premiumProducts">0</h2>
+                <p class="stat-foot">Products priced at $500+</p>
+            </article>
+        </section>
+
+        <section id="inventory" class="panel">
+            <div class="section-heading">
+                <div>
+                    <h2>Product Inventory</h2>
+                    <p class="muted">Search, filter, edit, or remove products.</p>
+                </div>
+                <button id="addButton" class="button primary">+ Add Product</button>
+            </div>
+
+            <div class="toolbar">
+                <input id="searchInput" type="search"
+                    placeholder="Search products..." aria-label="Search products">
+
+                <select id="categoryFilter" aria-label="Filter by category">
+                    <option value="All">All Categories</option>
+                    <option value="Budget">Budget</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Premium">Premium</option>
+                </select>
+
+                <select id="sortSelect" aria-label="Sort products">
+                    <option value="default">Default Order</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PRODUCT</th>
+                            <th>PRICE</th>
+                            <th>CATEGORY</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryTable"></tbody>
+                </table>
+            </div>
+            <p id="tableCount" class="table-count"></p>
+            <p id="message" class="message" role="status" aria-live="polite"></p>
+        </section>
+
+        <section id="analytics" class="bottom-grid">
+            <article class="panel">
+                <h2>Category Breakdown</h2>
+                <p class="muted">Products grouped by price category.</p>
+                <div id="categoryBreakdown" class="breakdown"></div>
+            </article>
+
+            <article class="panel">
+                <h2>Financial Calculator</h2>
+                <p class="muted">Estimate tax and discount on inventory value.</p>
+
+                <label for="taxRate">Tax rate (%)</label>
+                <input id="taxRate" type="number" min="0" max="100"
+                    step="0.1" value="10">
+
+                <label for="discountRate">Discount rate (%)</label>
+                <input id="discountRate" type="number" min="0" max="100"
+                    step="0.1" value="5">
+
+                <button id="calculateButton" class="button primary full-width">
+                    Calculate Total
+                </button>
+                <div id="financialResult" class="financial-result">
+                    Enter rates and calculate.
+                </div>
+            </article>
+        </section>
+
+        <section class="bottom-grid reports">
+            <article class="panel">
+                <h2>Affordable Products</h2>
+                <p class="muted">Products priced below $200.</p>
+                <ul id="affordableList" class="report-list"></ul>
+            </article>
+            <article class="panel">
+                <h2>Formatted Report</h2>
+                <p class="muted">Summary generated using array methods.</p>
+                <ul id="reportList" class="report-list"></ul>
+                <button id="exportButton" class="button secondary full-width">
+                    Export CSV
+                </button>
+            </article>
+        </section>
+
+        <footer>InventoryPro · Interactive JavaScript Project</footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
